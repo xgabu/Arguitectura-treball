@@ -92,6 +92,16 @@ network-manager-applet
 blueman
 pulseaudio-bluetooth
 
+# Virtualization (KVM + Virt-Manager) — for testing CachyOS deployments
+virt-manager
+qemu-full
+edk2-ovmf
+dnsmasq
+bridge-utils
+vde2
+iptables-nft
+libvirt
+
 # ============================================
 # AUR packages (yay/paru)
 # ============================================
