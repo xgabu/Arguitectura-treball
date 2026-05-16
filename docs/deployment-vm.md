@@ -142,7 +142,43 @@ Executa aquesta llista de comprovació per assegurar que tot és correcte:
 | **AI** | Ollama actiu | `ollama list` |
 | **Configs** | Symlinks correctes | `ls -la ~/.config/hypr` |
 
-## 5. Troubleshooting
+## 5. Captura de Pantalla de la VM (per a OpenCode/Gentle AI)
+
+Quan treballis amb OpenCode, pots demanar a l'agent que capturi la pantalla de la VM per veure errors o estat de la instal·lació.
+
+### 5.1. Requisits
+- El MCP `server-filesystem` ha d'estar configurat a `~/.config/opencode/opencode.json`
+  (permet a l'agent llegir fitxers del teu sistema, incloses les captures).
+- Exemple de configuració:
+  ```jsonc
+  "mcp": {
+    "filesystem": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-filesystem", "/tmp", "/home/xaumegb"]
+    }
+  }
+  ```
+
+### 5.2. Capturar la Pantalla
+Dins d'OpenCode, demana a l'agent:
+
+> *"Fes una captura de pantalla de la VM cachyos-test"*
+
+L'agent executarà aquest comandament:
+```bash
+virsh -c qemu:///system screenshot cachyos-test /tmp/vm-screen.png
+```
+
+Després l'agent llegeix la imatge des de `/tmp/vm-screen.png` gràcies al MCP filesystem.
+
+### 5.3. Notes
+- La VM ha d'estar en marxa per poder fer la captura.
+- Si l'agent no pot llegir la imatge (error d'input no suportat), pots descriure tu què veus o executar el comandament manualment i compartir la imatge.
+- La qualitat de la captura depèn de la configuració de vídeo de la VM (VNC/SPICE).
+
+---
+
+## 6. Troubleshooting
 
 ### Error: `pacman: keyring is outdated`
 ```bash
