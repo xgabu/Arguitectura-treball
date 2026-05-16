@@ -4,6 +4,25 @@ Aquest document descriu el procediment estàndard per desplegar la configuració
 
 ## 1. Preparació de la VM
 
+### 1.0. Preparació de l'Host (Espai)
+Per defecte, libvirt guarda les imatges a `/var/lib/libvirt/images/`, que pot tenir poc espai.
+Es recomana moure les imatges al directori home de l'usuari:
+
+```bash
+# 1. Crear directori VMs
+mkdir -p ~/VMs
+
+# 2. Moure imatges existents (si n'hi ha)
+sudo mv /var/lib/libvirt/images/*.qcow2 ~/VMs/
+sudo mv /var/lib/libvirt/images/*.iso ~/VMs/
+sudo mv /var/lib/libvirt/images/*_VARS.fd ~/VMs/
+
+# 3. Actualitzar la definició de la VM
+virsh -c qemu:///system dumpxml cachyos-test > /tmp/vm.xml
+sed -i "s|/var/lib/libvirt/images/|/home/TU_USUARI/VMs/|g" /tmp/vm.xml
+virsh -c qemu:///system define /tmp/vm.xml
+```
+
 ### 1.1. Instal·lació Base
 1.  Arrenca la VM amb la ISO de CachyOS.
 2.  Segueix l'instal·lador amb aquesta configuració:
@@ -46,7 +65,11 @@ chmod 600 ~/.ssh/authorized_keys
 sudo pacman -S openssh --noconfirm
 sudo systemctl enable --now sshd
 
-# 4. Verifica que funciona (des de l'host)
+# 4. **IMPORTANT**: Obre el tallafocs (CachyOS el té actiu per defecte)
+sudo ufw allow ssh
+sudo ufw enable
+
+# 5. Verifica que funciona (des de l'host)
 # ssh TU_USUARI@IP_DE_LA_VM
 ```
 
@@ -59,6 +82,19 @@ virsh -c qemu:///system domifaddr cachyos-test
 Prova la connexió:
 ```bash
 ssh TU_USUARI@IP_DE_LA_VM
+```
+
+### 2.3. Configuració de Clau SSH per GitHub (Opcional però recomanat)
+Si la VM necessita accés a GitHub (per clonar el repo o fer push), genera una clau SSH:
+```bash
+# 1. Genera la clau
+ssh-keygen -t ed25519 -C "xaumegb@cachyos-vm"
+# (Prem Enter per acceptar defaults i sense contrasenya)
+
+# 2. Mostra la clau pública
+cat ~/.ssh/id_ed25519.pub
+
+# 3. Afegeix-la a GitHub Settings > SSH Keys
 ```
 
 ## 3. Desplegament de la Configuració
@@ -125,6 +161,14 @@ cd yay-bin && makepkg -si --noconfirm
 
 ### Error: `git clone: Permission denied (publickey)`
 Assegura't que la clau SSH està ben configurada a `~/.ssh/authorized_keys` a la VM i que `sshd` està corrent.
+
+### Error: `ssh: connect to host ... port 22: Connection timed out`
+CachyOS activa el tallafocs (`ufw`) per defecte i bloqueja SSH.
+```bash
+# A la VM:
+sudo ufw allow ssh
+sudo ufw enable
+```
 
 ---
 *Última actualització: Maig 2026*
