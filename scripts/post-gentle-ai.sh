@@ -14,8 +14,14 @@ echo "[gentle-ai] Setting up Gentle AI + OpenCode..."
 if command -v opencode &>/dev/null; then
     echo "[gentle-ai] OpenCode already installed: $(opencode --version 2>/dev/null || echo 'unknown')"
 else
-    echo "[gentle-ai] Installing OpenCode via npm..."
-    npm install -g opencode
+    echo "[gentle-ai] Installing OpenCode via official script..."
+    curl -fsSL https://opencode.ai/install | bash
+    
+    # Add to PATH if not already there
+    if [[ -d "$HOME/.opencode/bin" ]] && ! echo "$PATH" | grep -q "$HOME/.opencode/bin"; then
+        echo 'export PATH="$HOME/.opencode/bin:$PATH"' >> "$HOME/.zshrc"
+        export PATH="$HOME/.opencode/bin:$PATH"
+    fi
     echo "[gentle-ai] OpenCode installed"
 fi
 

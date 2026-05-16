@@ -24,7 +24,7 @@ nfs-utils
 
 # Development
 nodejs
-npm
+pnpm
 go
 python
 python-pip
