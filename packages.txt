@@ -40,7 +40,7 @@ hyprland
 waybar
 rofi-wayland
 dunst
-swaynotificationcenter
+swaync
 hyprpaper
 hyprlock
 hypridle
@@ -49,7 +49,7 @@ grim
 slurp
 wl-clipboard
 waypipe
-xwayland
+xorg-xwayland
 
 # Terminal & Shell
 zsh
@@ -97,7 +97,7 @@ virt-manager
 qemu-full
 edk2-ovmf
 dnsmasq
-bridge-utils
+# bridge-utils (deprecated, functionality in iproute2)
 vde2
 iptables-nft
 libvirt
