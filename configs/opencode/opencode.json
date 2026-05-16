@@ -1,0 +1,7 @@
+{
+  "agent": {
+    "gentle-orchestrator": {
+      "model": "opencode/default"
+    }
+  }
+}

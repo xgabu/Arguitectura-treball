@@ -184,6 +184,12 @@ apply_configs() {
     [[ -f "$configs_dir/brave/brave-flags.conf" ]] && \
         link_config "$configs_dir/brave/brave-flags.conf" "$HOME/.config/brave-flags.conf"
 
+    # OpenCode / Gentle AI
+    [[ -f "$configs_dir/opencode/opencode.json" ]] && \
+        link_config "$configs_dir/opencode/opencode.json" "$HOME/.config/opencode/opencode.json"
+    [[ -f "$configs_dir/opencode/AGENTS.md" ]] && \
+        link_config "$configs_dir/opencode/AGENTS.md" "$HOME/.config/opencode/AGENTS.md"
+
     log_ok "All configs applied"
 }
 

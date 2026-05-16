@@ -25,6 +25,7 @@ reboot
 ├── configs/
 │   ├── hyprland/         # Hyprland WM config
 │   ├── lazyvim/          # LazyVim (Neovim) config
+│   ├── opencode/         # OpenCode + Gentle AI (opencode.json, AGENTS.md)
 │   ├── zsh/              # .zshrc, .zshenv
 │   ├── shell/            # starship.toml, .tmux.conf
 │   └── brave/            # brave-flags.conf
@@ -51,9 +52,10 @@ El `setup.sh` és **idempotent** — es pot executar múltiples vegades sense tr
 1. **Instal·la paquets** — `pacman -S --needed` (només els que falten)
 2. **Instal·la yay** — AUR helper (si no existeix)
 3. **Instal·la paquets AUR** — `yay -S --needed`
-4. **Aplica configs** — Crea symlinks de `configs/` a `~/.config/`
+4. **Aplica configs** — Crea symlinks de `configs/` a `~/.config/` (inclòs Gentle AI)
 5. **Instal·la LazyVim** — Clona starter si no existeix `~/.config/nvim`
 6. **Configura zsh** — Canvia shell per defecte
+7. **Executa post-install** — Ollama, OpenCode, fonts
 
 ## Afegir nous paquets
 
