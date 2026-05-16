@@ -1,0 +1,101 @@
+# ============================================
+# System packages (pacman)
+# ============================================
+
+# Core utilities
+base-devel
+git
+curl
+wget
+unzip
+tar
+jq
+ripgrep
+fd
+bat
+eza
+fzf
+zoxide
+htop
+btop
+fastfetch
+
+# Development
+nodejs
+npm
+go
+python
+python-pip
+rustup
+docker
+docker-compose
+podman
+lazygit
+neovim
+
+# Hyprland & Wayland ecosystem
+hyprland
+waybar
+rofi-wayland
+dunst
+swaynotificationcenter
+hyprpaper
+hyprlock
+hypridle
+hyprpicker
+grim
+slurp
+wl-clipboard
+waypipe
+xwayland
+
+# Terminal & Shell
+zsh
+starship
+tmux
+foot
+kitty
+
+# Multimedia & Fonts
+pipewire
+pipewire-pulse
+pipewire-alsa
+wireplumber
+pavucontrol
+ffmpeg
+gst-plugins-base
+gst-plugins-good
+gst-plugins-bad
+gst-plugins-ugly
+fontconfig
+noto-fonts
+noto-fonts-emoji
+noto-fonts-cjk
+ttf-jetbrains-mono
+ttf-jetbrains-mono-nerd
+ttf-fira-code
+ttf-nerd-fonts-symbols
+ttf-dejavu
+
+# Apps
+brave-bin
+ollama
+file-roller
+nautilus
+xdg-desktop-portal
+xdg-desktop-portal-hyprland
+xdg-user-dirs
+networkmanager
+network-manager-applet
+blueman
+pulseaudio-bluetooth
+
+# ============================================
+# AUR packages (yay/paru)
+# ============================================
+
+# AUR packages listed separately
+# brave-bin (if not in official repos)
+# ollama-bin (if not in official repos)
+# ttf-meslo-nerd
+# cachyos-hyprland-settings (if available)

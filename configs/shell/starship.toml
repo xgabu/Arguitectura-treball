@@ -1,0 +1,69 @@
+# ============================================
+# Starship Prompt Configuration
+# ============================================
+
+format = """
+$directory\
+$git_branch\
+$git_status\
+$fill\
+$nodejs\
+$python\
+$golang\
+$rust\
+$docker_context\
+$jobs\
+$time\
+$line_break\
+$character"""
+
+[directory]
+style = "bold cyan"
+truncation_length = 4
+truncate_to_repo = true
+
+[git_branch]
+style = "bold purple"
+format = "[$symbol$branch]($style) "
+
+[git_status]
+style = "bold red"
+format = '[$all_status$ahead_behind]($style) '
+
+[fill]
+symbol = " "
+
+[nodejs]
+style = "bold green"
+format = "[$symbol($version)]($style) "
+
+[python]
+style = "bold yellow"
+format = "[$symbol($version)]($style) "
+
+[golang]
+style = "bold blue"
+format = "[$symbol($version)]($style) "
+
+[rust]
+style = "bold red"
+format = "[$symbol($version)]($style) "
+
+[docker_context]
+style = "bold blue"
+format = "[$symbol$context]($style) "
+
+[jobs]
+style = "bold yellow"
+symbol = "✦"
+format = "[$symbol$number]($style) "
+
+[time]
+style = "bold dimmed white"
+format = "[$time]($style)"
+time_format = "%H:%M"
+disabled = false
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
