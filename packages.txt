@@ -90,7 +90,7 @@ xdg-user-dirs
 networkmanager
 network-manager-applet
 blueman
-pulseaudio-bluetooth
+# pulseaudio-bluetooth (removed: conflicts with pipewire-pulse; blueman works with pipewire)
 
 # Virtualization (KVM + Virt-Manager) — for testing CachyOS deployments
 virt-manager
