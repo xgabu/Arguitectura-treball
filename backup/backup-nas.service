@@ -1,0 +1,11 @@
+[Unit]
+Description=Backup to QNAP via NFS
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/backup-nas.sh
+Environment="HOME=%h"
+StandardOutput=journal
+StandardError=journal

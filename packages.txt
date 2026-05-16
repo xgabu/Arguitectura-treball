@@ -19,6 +19,8 @@ zoxide
 htop
 btop
 fastfetch
+rsync
+nfs-utils
 
 # Development
 nodejs

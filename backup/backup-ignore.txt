@@ -1,0 +1,40 @@
+# Directories
+node_modules/
+.git/
+.cache/
+__pycache__/
+.venv/
+venv/
+dist/
+build/
+target/
+*.o
+*.pyc
+
+# System
+.Trash-*/
+lost+found/
+.AppleDouble/
+._*
+
+# Development
+.vscode/
+.idea/
+*.log
+tmp/
+temp/
+
+# Browser
+BraveSoftware/
+brave/
+chrome/
+chromium/
+
+# Thumbnails
+Thumbnails/
+.thumbnails/
+
+# Large files (backup separately if needed)
+*.iso
+*.vmdk
+*.qcow2
