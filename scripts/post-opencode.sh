@@ -10,8 +10,15 @@ echo "[opencode] Setting up OpenCode..."
 if command -v opencode &>/dev/null; then
     echo "[opencode] Already installed: $(opencode --version 2>/dev/null || echo 'unknown')"
 else
-    echo "[opencode] Installing via npm..."
-    npm install -g opencode
+    echo "[opencode] Installing via official install script..."
+    curl -fsSL https://opencode.ai/install | bash
+    
+    # Add to PATH if not already there
+    if [[ -d "$HOME/.opencode/bin" ]] && ! echo "$PATH" | grep -q "$HOME/.opencode/bin"; then
+        echo 'export PATH="$HOME/.opencode/bin:$PATH"' >> "$HOME/.zshrc"
+        export PATH="$HOME/.opencode/bin:$PATH"
+    fi
+    
     echo "[opencode] Installed"
 fi
 
